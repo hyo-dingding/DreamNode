@@ -1,0 +1,14 @@
+{
+    "name": "6-express",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "nodemon app-route"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "express": "5.0.0-alpha.8",
+        "nodemon": "^2.0.20"
+    }
+}

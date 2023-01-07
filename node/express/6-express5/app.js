@@ -8,14 +8,24 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/file1", (req, res) => {});
+app.get("/file1", (req, res) => {
+    try {
+        const data = fs.readFile("/file1.txt");
+        res.send(data);
+    } catch (error) {
+        res.sendStatus(404);
+    }
+});
 
-app.get("/file2", (req, res, next) => {
-    return fsAsync.readFile("/file.txt");
+app.get("/file2", (req, res) => {
+    return fsAsync
+        .readFile("/file.txt") //
+        .then((data) => res.send(data));
 });
 
 app.get("/file3", async (req, res) => {
     const data = await fsAsync.readFile("/file.txt");
+    res.send(data);
 });
 
 app.use((error, req, res, next) => {
